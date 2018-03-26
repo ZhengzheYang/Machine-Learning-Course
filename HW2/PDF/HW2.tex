@@ -1,0 +1,116 @@
+\documentclass[10pt]{article}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage[margin=1.5in]{geometry}
+\doublespacing
+\title{HW1}
+\date{2018-02-19}
+\author{Zhengzhe Yang}
+
+
+\begin{document}
+	\pagenumbering{gobble}
+	\maketitle
+	\newpage
+	\pagenumbering{arabic}	
+	
+	\paragraph{Question 1: }\mbox{}\\
+	Assuming normality of each class, calculate the mean vector and covariance matrix of each class based on the training data. Construct a Bayesian decision boundary for the following two scenarios:\\
+	(a) equal prior; \\
+	(b) prior calculated from the data.\\
+	Plot each of the boundary on the scatter plots of the training data. Calculate the classification error rate on the testing data.\\
+	Note: Please show your work of computing the boundary. Do NOT use the QDA function.\\
+	\\
+	\textbf{Answer:}\\
+	Mean vector of class 0: [1.06242164, 1.61910524]\\
+	Mean vector of class 1: [1.13915258, -1.18380439]\\
+	Covariance matrix of class 0: [[4.79170095, 0.90180838], [0.90180838, 1.2945715 ]]\\
+	Covariance matrix of class 1: [[ 0.7560476 , -0.5093068 ], [-0.5093068 ,  3.19387164]]\\
+	Classification error rate for equal prior: 0.057692\\
+	Classification error rate for calculated prior: 0.057692\\
+	\begin{figure}[h!]
+    	\begin{minipage}{0.65\textwidth}
+		\centering
+        		\includegraphics[width=0.8\textwidth]{"Bayesian Decision Boundary with Equal Prior".png} 
+        		\caption{Boundary with Equal Prior}
+    	\end{minipage}\hfill
+    	\begin{minipage}{0.65\textwidth}
+		\centering
+        		\includegraphics[width=0.8\textwidth]{"Bayesian Decision Boundary with Calculate Prior".png} 
+        		\caption{Boundary with Calculate Prior}
+   	 \end{minipage}
+	\end{figure}
+	
+	\newpage
+	\paragraph{Question 2: }\mbox{}\\
+	Using the training data, find the class-specific densities using kernel density estimator. Using the Bayesian decision rule with equal prior, predict the class labels on the testing data. Calculate the error rate. Repeat the procedure using three kernel sizes: \\
+	If you use sklearn, please use symmetric kernels with bandwidth 10, 1, 0.1;\\
+	If you use scipy, which allows non-symmetric kernel, please use\\
+	(a) 0.1x covariance matrix of the class-specific training data\\
+	(b) 1x covariance matrix of the class-specific training data\\
+	(c) 10x covariance matrix of the class-specific training data\\
+	Plot the testing data and color the misclassified points differently.\\
+	\\
+	\textbf{Answer:}\\
+	\begin{figure}[h!]
+    	\begin{minipage}{0.55\textwidth}
+		\centering
+        		\includegraphics[width=0.8\textwidth]{{"bandwidth_0.1"}.png} 
+        		\caption{When bandwidth=0.1}
+    	\end{minipage}
+    	\begin{minipage}{0.55\textwidth}
+		\centering
+        		\includegraphics[width=0.8\textwidth]{{"bandwidth_1"}.png} 
+        		\caption{When bandwidth=1}
+   	 \end{minipage}
+	 \begin{minipage}{0.55\textwidth}
+	 	\centering 
+		\includegraphics[width=0.8\textwidth]{{"bandwidth_10"}.png}
+		\caption{When bandwidth=10}
+	\end{minipage}
+	\end{figure}
+	\mbox{}\\
+	When bandwidth = 0.1, the classification error rate is 0.042308\\
+	When bandwidth = 1, the classification error rate is 0.061538\\
+	When bandwidth = 10, the classification error rate is 0.615385\\
+	
+	\paragraph{Question 3: }\mbox{}\\
+	Code a function for the K-nearest neighbor classifier. Please do not use the built-in KNN classifier.\\
+	Classify the data points in the testing data using three settings: (a) K=1, (b) K=5, (c) K=10.\\
+	For each setting, consider class ?1? as disease cases and ?0? as healthy controls. Calculate the sensitivity, specificity, and false discovery rate. Plot the testing data. Use different shape to show the true class labels, and color the misclassified points with different colors.\\
+	\\
+	\textbf{Answer:}\\
+	When k = 1\\
+         Sensitivity rate: 0.920000\\
+         	Specificity rate: 0.975000\\
+         False discovery rate rate: 0.041667\\
+         When k = 5\\
+         Sensitivity rate: 0.960000\\
+         Specificity rate: 0.981250\\
+         False discovery rate rate: 0.030303\\
+         When k = 10\\
+         Sensitivity rate: 0.950000\\
+         Specificity rate: 0.987500\\
+         False discovery rate rate: 0.020619\\
+	\begin{figure}
+    	\begin{minipage}{0.8\textwidth}
+		\centering
+        		\includegraphics[width=0.8\textwidth]{{"k=1"}.png} 
+        		\caption{When k=1}
+    	\end{minipage}
+    	\begin{minipage}{0.8\textwidth}
+		\centering
+        		\includegraphics[width=0.8\textwidth]{{k=5"}.png} 
+        		\caption{When k=5}
+   	 \end{minipage}
+	 \begin{minipage}{0.8\textwidth}
+	 	\centering 
+		\includegraphics[width=0.8\textwidth]{{"k=10"}.png}
+		\caption{When k=10}
+	\end{minipage}
+	\end{figure}
+	
+	\clearpage
+	\textbf{\textit{\centerline{Please see the code starting from next page}}}
+
+\end{document}
